@@ -67,7 +67,7 @@ public class UserControllerTest {
 	 */
 	@Test
 	public void createUserDocument() throws Exception {
-		Document mockDocument = new Document("Document5", "doc5", "This is a new document to send", "20190305", "docx");;
+		Document mockDocument = new Document("5", "doc5", "This is a new document to send", "20190305", "docx");;
 
 		// userService.addDocument to respond back with mockDocument
 		Mockito.when(userService.addDocument(Mockito.anyString(), Mockito.any(Document.class)))
@@ -84,7 +84,7 @@ public class UserControllerTest {
 
 		assertEquals(HttpStatus.CREATED.value(), response.getStatus());
 
-		assertEquals("http://localhost/users/User1/documents/1", response.getHeader(HttpHeaders.LOCATION));
+		assertEquals("http://localhost/users/User1/documents/5", response.getHeader(HttpHeaders.LOCATION));
 		
 		TaskService.sendTask(mockDocument.getBody());
 		
