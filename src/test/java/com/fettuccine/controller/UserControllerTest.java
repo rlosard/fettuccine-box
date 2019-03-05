@@ -1,7 +1,8 @@
-package com.fettucine.controller;
+package com.fettuccine.controller;
 
 import static org.junit.Assert.assertEquals;
 
+import org.apache.commons.logging.Log;
 import org.junit.Test;
 import org.junit.runner.RunWith;
 import org.mockito.Mockito;
@@ -19,7 +20,6 @@ import org.springframework.test.web.servlet.MvcResult;
 import org.springframework.test.web.servlet.RequestBuilder;
 import org.springframework.test.web.servlet.request.MockMvcRequestBuilders;
 
-import com.fettuccine.controller.UserController;
 import com.fettuccine.entity.Document;
 import com.fettuccine.service.UserService;
 
@@ -80,7 +80,6 @@ public class UserControllerTest {
 		MvcResult result = mockMvc.perform(requestBuilder).andReturn();
 
 		MockHttpServletResponse response = result.getResponse();
-
 		assertEquals(HttpStatus.CREATED.value(), response.getStatus());
 
 		assertEquals("http://localhost/users/User1/documents/1", response.getHeader(HttpHeaders.LOCATION));
