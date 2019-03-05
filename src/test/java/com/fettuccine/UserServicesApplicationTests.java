@@ -1,4 +1,4 @@
-package com.fettucine.rest;
+package com.fettuccine;
 
 import org.junit.Test;
 import org.junit.runner.RunWith;

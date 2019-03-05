@@ -1,4 +1,4 @@
-package com.fettuccine.rest.controller;
+package com.fettuccine.controller;
 
 import java.net.URI;
 import java.util.List;
@@ -12,9 +12,9 @@ import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RestController;
 import org.springframework.web.servlet.support.ServletUriComponentsBuilder;
 
-import com.fettuccine.rest.entity.Document;
-import com.fettuccine.rest.entity.User;
-import com.fettuccine.rest.service.UserService;
+import com.fettuccine.entity.Document;
+import com.fettuccine.entity.User;
+import com.fettuccine.service.UserService;
 
 /**
  * @author rlosard

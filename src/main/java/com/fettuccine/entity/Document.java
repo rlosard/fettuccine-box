@@ -1,4 +1,4 @@
-package com.fettuccine.rest.entity;
+package com.fettuccine.entity;
 
 /**
  * @author rlosard

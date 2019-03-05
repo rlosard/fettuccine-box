@@ -1,4 +1,4 @@
-package com.fettuccine.rest.service;
+package com.fettuccine.service;
 
 import java.math.BigInteger;
 import java.security.SecureRandom;
@@ -8,8 +8,8 @@ import java.util.List;
 
 import org.springframework.stereotype.Component;
 
-import com.fettuccine.rest.entity.Document;
-import com.fettuccine.rest.entity.User;
+import com.fettuccine.entity.Document;
+import com.fettuccine.entity.User;
 
 @Component
 public class UserService {

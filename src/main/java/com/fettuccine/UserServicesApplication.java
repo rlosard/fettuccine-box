@@ -1,4 +1,4 @@
-package com.fettuccine.rest;
+package com.fettuccine;
 
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;

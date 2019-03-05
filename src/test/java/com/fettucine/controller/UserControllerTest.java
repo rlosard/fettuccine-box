@@ -1,4 +1,4 @@
-package com.fettucine.rest.controller;
+package com.fettucine.controller;
 
 import static org.junit.Assert.assertEquals;
 
@@ -19,9 +19,9 @@ import org.springframework.test.web.servlet.MvcResult;
 import org.springframework.test.web.servlet.RequestBuilder;
 import org.springframework.test.web.servlet.request.MockMvcRequestBuilders;
 
-import com.fettuccine.rest.controller.UserController;
-import com.fettuccine.rest.entity.Document;
-import com.fettuccine.rest.service.UserService;
+import com.fettuccine.controller.UserController;
+import com.fettuccine.entity.Document;
+import com.fettuccine.service.UserService;
 
 /**
  * @author rlosard
