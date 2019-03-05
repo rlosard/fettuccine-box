@@ -23,6 +23,7 @@ import com.fettuccine.controller.UserController;
 import com.fettuccine.entity.Document;
 import com.fettuccine.service.TaskService;
 import com.fettuccine.service.UserService;
+import com.fettuccine.workers.Worker;
 
 /**
  * @author rlosard
@@ -89,6 +90,12 @@ public class UserControllerTest {
 		TaskService.sendTask(mockDocument.getBody());
 		
 
+	}
+	
+	@Test
+	public void receiveDocuments() throws Exception {
+		
+		Worker.receiveTasks();
 	}
 
 }
