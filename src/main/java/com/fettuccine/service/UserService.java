@@ -103,15 +103,6 @@ public class UserService {
 		document.setId(randomId);
 
 		user.getDocuments().add(document);
-		try {
-			
-			TaskService.sendTask(document.getBody());
-		
-		} catch (Exception e) {
-			// TODO Auto-generated catch block
-			e.printStackTrace();
-		}
-
 		return document;
 	}
 }

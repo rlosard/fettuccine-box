@@ -14,7 +14,12 @@ public class TaskService {
 		ConnectionFactory factory = new ConnectionFactory();
 
 		// RabbitMQ host
-		factory.setHost("localhost");
+		//factory.setHost("localhost");
+		
+	      factory.setHost("bullfrog.rmq.cloudamqp.com");
+	      factory.setVirtualHost("ruidwryh");
+	      factory.setUsername("ruidwryh");
+	      factory.setPassword("rUI8fKIEMr20fLA-ECjmNhXnSR9RYXug");
 
 		try (Connection connection = factory.newConnection(); Channel channel = connection.createChannel()) {
 			channel.queueDeclare(TASK_QUEUE_NAME, true, false, false, null);

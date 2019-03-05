@@ -2,7 +2,6 @@ package com.fettuccine.controller;
 
 import static org.junit.Assert.assertEquals;
 
-import org.apache.commons.logging.Log;
 import org.junit.Test;
 import org.junit.runner.RunWith;
 import org.mockito.Mockito;
@@ -20,7 +19,9 @@ import org.springframework.test.web.servlet.MvcResult;
 import org.springframework.test.web.servlet.RequestBuilder;
 import org.springframework.test.web.servlet.request.MockMvcRequestBuilders;
 
+import com.fettuccine.controller.UserController;
 import com.fettuccine.entity.Document;
+import com.fettuccine.service.TaskService;
 import com.fettuccine.service.UserService;
 
 /**
@@ -37,10 +38,11 @@ public class UserControllerTest {
 	@MockBean
 	private UserService userService;
 
-	Document mockDocument = new Document("Document1", "Spring", "10 Steps", "20190503", "docx");
+	Document mockDocument = new Document("Document1", "doc1", "Bla bla bla", "today", "docx");
 
-	String exampleDocumentJson = "{\"name\":\"Spring\",\"description\":\"My Doc 1\",\"creationDate\":\"20180305\",\"type\":\"docx\"}";
+	String exampleDocumentJson = "{\"name\":\"doc1\",\"description\":\"Bla bla bla\",\"creationDate\":\"today\",\"type\":\"docx\"}";
 
+	
 	/**
 	 * @throws Exception
 	 */
@@ -55,8 +57,7 @@ public class UserControllerTest {
 		MvcResult result = mockMvc.perform(requestBuilder).andReturn();
 
 		System.out.println(result.getResponse());
-		String expected = "{id:Document1,name:Spring,description:My Doc 1}";
-
+		String expected = "{id:Document1,name:doc1,body:Bla bla bla,creationDate:today,type:docx}";
 
 		JSONAssert.assertEquals(expected, result.getResponse().getContentAsString(), false);
 	}
@@ -66,7 +67,7 @@ public class UserControllerTest {
 	 */
 	@Test
 	public void createUserDocument() throws Exception {
-		Document mockDocument = new Document("1", "Smallest Number", "1", "20190305", "docx");
+		Document mockDocument = new Document("Document5", "doc5", "This is a new document to send", "20190305", "docx");;
 
 		// userService.addDocument to respond back with mockDocument
 		Mockito.when(userService.addDocument(Mockito.anyString(), Mockito.any(Document.class)))
@@ -80,9 +81,13 @@ public class UserControllerTest {
 		MvcResult result = mockMvc.perform(requestBuilder).andReturn();
 
 		MockHttpServletResponse response = result.getResponse();
+
 		assertEquals(HttpStatus.CREATED.value(), response.getStatus());
 
 		assertEquals("http://localhost/users/User1/documents/1", response.getHeader(HttpHeaders.LOCATION));
+		
+		TaskService.sendTask(mockDocument.getBody());
+		
 
 	}
 
